@@ -44,6 +44,13 @@ class VerifyDocument extends Component
         }
     }
 
+    public function clearFile()
+    {
+        $this->file = null;
+        $this->selectedFileName = null;
+        $this->selectedFileSizeKb = null;
+    }
+
     public function verify(VerificationService $verificationService)
     {
         $this->errorMessage = null;

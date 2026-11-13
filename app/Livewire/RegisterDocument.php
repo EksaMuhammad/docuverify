@@ -61,6 +61,13 @@ class RegisterDocument extends Component
         }
     }
 
+    public function clearFile()
+    {
+        $this->file = null;
+        $this->selectedFileName = null;
+        $this->selectedFileSizeKb = null;
+    }
+
     public function register(DocumentHashService $hashService, BlockchainService $blockchainService)
     {
         $this->errorMessage = null;
