@@ -35,3 +35,4 @@ class ActivityLogs extends Component
             ->layout('layouts.admin', ['title' => 'System Activity Logs']);
     }
 }
+

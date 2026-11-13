@@ -114,3 +114,4 @@ class ResearchDashboard extends Component
         ))->layout('layouts.admin', ['title' => 'Research & Evaluation Metrics']);
     }
 }
+

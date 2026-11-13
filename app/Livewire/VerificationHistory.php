@@ -44,3 +44,4 @@ class VerificationHistory extends Component
             ->layout('layouts.admin', ['title' => 'Verification Audit Trail']);
     }
 }
+

@@ -322,3 +322,4 @@ app.get("/api/documents/:code", async (req, res) => {
 app.listen(PORT, "127.0.0.1", () => {
   console.log(`DocuVerify Blockchain Service running on http://127.0.0.1:${PORT}`);
 });
+

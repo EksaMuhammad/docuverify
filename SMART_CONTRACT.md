@@ -86,3 +86,4 @@ Execute deployment:
 cd blockchain && npx hardhat run scripts/deploy.js --network sepolia
 ```
 The script will output the deployed contract address and update `blockchain/deployment.json`.
+

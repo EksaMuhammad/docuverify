@@ -139,3 +139,4 @@ CREATE TABLE `activity_logs` (
   CONSTRAINT `activity_logs_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL
 );
 ```
+

@@ -46,3 +46,4 @@ class TransactionHistory extends Component
             ->layout('layouts.admin', ['title' => 'Blockchain Transactions']);
     }
 }
+

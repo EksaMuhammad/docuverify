@@ -82,3 +82,4 @@ To perform experimental evaluation for thesis research:
 | **S8** | **RPC Node Network Outage** | Disable or stop blockchain service | `TECHNICAL ERROR` (Gray) |
 
 All verification attempts are tracked in `verification_logs` with exact processing time in milliseconds and can be exported directly via the **Academic Research & Evaluation Panel** (`/admin/research`) to CSV.
+

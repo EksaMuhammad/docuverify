@@ -22,3 +22,4 @@ class DocumentController extends Controller
         return view('admin.documents.show', compact('document', 'onChainRecord'));
     }
 }
+

@@ -78,3 +78,4 @@ DocuVerify is a decentralized digital document verification platform that certif
   - Hardhat Local Node: `8545`
   - MariaDB: `3307`
 - **Security:** CSRF protection enabled on all web forms; rate limiting on public endpoints; passwords hashed via bcrypt (12 rounds); private keys restricted strictly to backend environment variables.
+

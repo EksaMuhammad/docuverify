@@ -9,7 +9,6 @@ use App\Services\BlockchainService;
 use App\Services\DocumentHashService;
 use Exception;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -22,6 +21,8 @@ class RegisterDocument extends Component
     public string $documentCode = '';
     public string $notes = '';
     public $file = null;
+    public ?string $selectedFileName = null;
+    public ?float $selectedFileSizeKb = null;
 
     public bool $isProcessing = false;
     public ?array $registrationResult = null;
@@ -47,6 +48,19 @@ class RegisterDocument extends Component
         $this->documentCode = $hashService->generateDocumentCode();
     }
 
+    public function updatedFile()
+    {
+        $this->validateOnly('file');
+        if ($this->file) {
+            try {
+                $this->selectedFileName = $this->file->getClientOriginalName();
+                $this->selectedFileSizeKb = round($this->file->getSize() / 1024, 1);
+            } catch (\Throwable $e) {
+                $this->selectedFileSizeKb = null;
+            }
+        }
+    }
+
     public function register(DocumentHashService $hashService, BlockchainService $blockchainService)
     {
         $this->errorMessage = null;
@@ -54,7 +68,6 @@ class RegisterDocument extends Component
         $this->validate();
 
         $this->isProcessing = true;
-        $tempFilePath = null;
 
         try {
             // Validate PDF header and magic bytes
@@ -127,7 +140,7 @@ class RegisterDocument extends Component
                     'registeredAt' => $txResult['registeredAt'],
                 ];
 
-                $this->reset(['documentName', 'notes', 'file']);
+                $this->reset(['documentName', 'notes', 'file', 'selectedFileName', 'selectedFileSizeKb']);
                 $this->documentCode = $hashService->generateDocumentCode();
             } else {
                 // Registration failed on blockchain
@@ -160,6 +173,7 @@ class RegisterDocument extends Component
                     @unlink($p);
                 }
             }
+            $this->file = null;
         }
     }
 

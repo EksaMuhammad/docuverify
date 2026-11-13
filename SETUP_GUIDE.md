@@ -100,3 +100,4 @@ php artisan serve --port=8001
    - Upload genuine PDF, review generated code, and click "Sign & Anchor to Blockchain".
 4. **Academic Research & SUS:** Visit [http://127.0.0.1:8001/admin/research](http://127.0.0.1:8001/admin/research)
    - View accuracy confusion matrix, latency benchmarks, gas costs, and download CSV datasets.
+

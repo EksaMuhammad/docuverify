@@ -88,9 +88,9 @@
                             </label>
                         </div>
                         <p class="text-xs text-slate-400">PDF file only. Temporary memory/storage used strictly for hashing and deleted immediately.</p>
-                        @if ($file)
+                        @if ($selectedFileName && !$registrationResult)
                             <div class="mt-2 text-xs text-emerald-700 font-semibold">
-                                Selected: {{ $file->getClientOriginalName() }} ({{ round($file->getSize() / 1024, 1) }} KB)
+                                Selected: {{ $selectedFileName }} @if ($selectedFileSizeKb) ({{ $selectedFileSizeKb }} KB) @endif
                             </div>
                         @endif
                     </div>
@@ -125,3 +125,4 @@
         </form>
     </div>
 </div>
+

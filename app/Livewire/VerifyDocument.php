@@ -13,6 +13,8 @@ class VerifyDocument extends Component
 
     public string $documentCode = '';
     public $file = null;
+    public ?string $selectedFileName = null;
+    public ?float $selectedFileSizeKb = null;
     public ?array $result = null;
     public bool $isVerifying = false;
     public ?string $errorMessage = null;
@@ -24,9 +26,21 @@ class VerifyDocument extends Component
 
     public function mount()
     {
-        // Pre-fill from query string if available: e.g. /verify?code=DOC-123
         if (request()->has('code')) {
             $this->documentCode = request()->query('code');
+        }
+    }
+
+    public function updatedFile()
+    {
+        $this->validateOnly('file');
+        if ($this->file) {
+            try {
+                $this->selectedFileName = $this->file->getClientOriginalName();
+                $this->selectedFileSizeKb = round($this->file->getSize() / 1024, 1);
+            } catch (\Throwable $e) {
+                $this->selectedFileSizeKb = null;
+            }
         }
     }
 
@@ -50,12 +64,13 @@ class VerifyDocument extends Component
             $this->errorMessage = $e->getMessage();
         } finally {
             $this->isVerifying = false;
+            $this->file = null; // Purge reference so Livewire does not re-query deleted file metadata
         }
     }
 
     public function resetForm()
     {
-        $this->reset(['documentCode', 'file', 'result', 'errorMessage', 'isVerifying']);
+        $this->reset(['documentCode', 'file', 'selectedFileName', 'selectedFileSizeKb', 'result', 'errorMessage', 'isVerifying']);
     }
 
     public function render()

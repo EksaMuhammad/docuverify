@@ -48,10 +48,10 @@
                             </label>
                         </div>
                         <p class="text-xs text-slate-500">Only genuine PDF files up to 20MB are accepted.</p>
-                        @if ($file)
+                        @if ($selectedFileName && !$result)
                             <div class="mt-2 text-xs text-emerald-700 font-semibold flex items-center justify-center">
                                 <svg class="w-4 h-4 mr-1 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                                Selected: {{ $file->getClientOriginalName() }} ({{ round($file->getSize() / 1024, 1) }} KB)
+                                Selected: {{ $selectedFileName }} @if ($selectedFileSizeKb) ({{ $selectedFileSizeKb }} KB) @endif
                             </div>
                         @endif
                     </div>
@@ -199,3 +199,4 @@
         </div>
     @endif
 </div>
+

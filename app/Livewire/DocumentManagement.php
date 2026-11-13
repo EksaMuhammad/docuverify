@@ -50,3 +50,4 @@ class DocumentManagement extends Component
             ->layout('layouts.admin', ['title' => 'Document Management']);
     }
 }
+

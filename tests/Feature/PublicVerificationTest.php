@@ -175,3 +175,4 @@ class PublicVerificationTest extends TestCase
         ]);
     }
 }
+

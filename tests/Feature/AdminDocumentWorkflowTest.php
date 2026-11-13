@@ -95,3 +95,4 @@ class AdminDocumentWorkflowTest extends TestCase
         $response->assertDontSee('Employee Handbook');
     }
 }
+

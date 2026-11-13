@@ -95,3 +95,4 @@ DocuVerify employs a decoupled, multi-service architecture ensuring separation o
 | **Blockchain Helper Service** | `3001` | `127.0.0.1` | Internal Node.js ethers.js v6 HTTP microservice. |
 | **Hardhat EVM Node** | `8545` | `127.0.0.1` | Local development and automated testing node. |
 | **MariaDB / MySQL** | `3307` | `127.0.0.1` | Relational audit database (`docuverify_db`). |
+
